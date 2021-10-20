@@ -1,0 +1,100 @@
+---
+title: "Cleaning Biochemical Data"
+author: "Camila Vargas"
+date: "10/20/2021"
+output: html_document
+---
+
+
+This scripts created matlab files into csvs and documents David's Koweek Biochemical data.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+library (plyr)
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(lubridate)
+library(R.matlab)
+
+
+## Sets R not to use scientific notations
+options(scipen=999) 
+```
+
+
+## Read file
+```{r}
+biochem_raw <- readMat(here::here("6.raw_data/Koweek et al_Biogeochemical_Data.mat"))
+```
+
+## Convert to DF
+```{r}
+## rbinds all objects on the list and keeps the list name as .id
+df <- ldply (biochem_raw, data.frame)
+
+```
+
+There are 5 tubes.
+For each tubes we have:
+
+- Time: time in standard MATLAB format (days)
+-S: salinity (psu)-data presented in Fig. 3
+- DOuM: dissolved oxygen (uM)
+- pH_calc: pH (total scale) calculated from DIC and TA
+- pCO2: pCO2 (uatm)
+- DIC: dissolved inorganic carbon (umol kg^-1)
+- sDIC: DIC salinity-normalized to 34.87 (umol kg^-1)
+- TA: total alkalinity (umol kg^-1)
+- sTA: TA salinity-normalized to 34.87 (umol kg^-1)
+- Omega_Ar: aragonite saturation state calculated from DIC and TA
+
+## Oganizing and renaming
+
+```{r}
+
+biochem_long <- df %>% 
+  separate(col = ".id",
+           into = c("variable", "col2", "date"),
+           sep = "\\.") %>% 
+  dplyr::mutate(date = ifelse(is.na(date), col2, date)) %>% 
+  dplyr::rename(
+         tube_1 = X1,
+         tube_2 = X2,
+         tube_3 = X3,
+         tube_4 = X4,
+         tube_5 = X5) %>% 
+  select(-col2) %>% 
+  pivot_longer(cols = 3:7,
+               names_to = "sample_tube")
+
+
+time_cols <- biochem_long %>% 
+  filter(variable == "Time") %>% 
+   mutate(time = as.POSIXct((value-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>% 
+  select(-value)
+
+
+biochem_clean <- biochem_long %>% 
+  filter(variable != "Time") %>% 
+  bind_rows(time_cols) %>% 
+  
+  pivot_wider(id_cols = c(time, sample_tube, date),
+              values_from = value,
+              names_from = variable)
+  
+  
+
+```
+
+## testing
+```{r}
+
+df_time <- ldply (biochem_raw[22], data.frame) %>% 
+  mutate(X1 = as.POSIXct((X1-719529)*86400, origin = "1970-01-01", tz = "HAST"))
+
+```
+
