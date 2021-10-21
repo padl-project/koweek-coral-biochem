@@ -1,0 +1,92 @@
+---
+title: "Cleaning PCA data"
+author: "Camila Vargas"
+date: "10/21/2021"
+output: html_document
+---
+
+This scripts created matlab files into csvs and documents David's Koweek PCA data.
+
+
+## Setup
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+library (plyr)
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(lubridate)
+library(R.matlab)
+
+## Sets R not to use scientific notations
+options(scipen=999) 
+```
+
+## Read data
+```{r}
+
+pca_raw <- readMat(here::here("6.raw_data/Koweek et al_PCA_data.mat"))
+
+```
+
+## Convert to DF
+```{r}
+## rbinds all objects on the list and keeps the list name as .id
+pca_df <- ldply (pca_raw, data.frame)
+
+```
+
+## Row names
+
+```{r}
+
+ld_number <- filter(pca_df, .id == "Row.labels") %>% 
+  select(37:100) %>% 
+  pivot_longer(cols = everything(),
+               names_to = "list_name",
+               values_to = "ld_SIB_row") %>% 
+  dplyr::mutate(padl_id = 1:dplyr::n()) %>% 
+  select(-list_name)
+
+```
+
+## Colnames
+
+```{r}
+
+names_col <- filter(pca_df, .id == "Column.labels.All.data") %>% 
+  select(20:36) %>% 
+  pivot_longer(cols = everything(),
+               names_to = "list_names",
+               values_to = "colnames")
+
+col_names_vec <- pull(names_col, "colnames")
+```
+
+## All data
+Pulling out all concatenated data from master DF
+
+```{r}
+all_data <- pca_df %>% 
+  filter(.id == "All.data") %>% 
+  select(2:18) %>% 
+  rename_at(vars(everything()), ~col_names_vec ) %>% 
+  dplyr::mutate(padl_id = 1:dplyr::n())
+
+```
+
+## Complete data set with names
+
+```{r}
+pca_clean <- all_data %>% 
+  left_join(ld_number, by = "padl_id") %>% 
+  select(LD_Eu = ld_SIB_row, everything(1:17)) %>% 
+  clean_names()
+```
+
+
+**NEED TO CHECK WITH SUPPLEMENTSRY MATERIAL**
+Make sure that the order in all data matches the order in the row nams and col names.

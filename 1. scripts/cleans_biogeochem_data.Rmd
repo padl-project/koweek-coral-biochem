@@ -90,6 +90,8 @@ biochem_clean <- biochem_long %>%
 
 ```
 
+**NEED TO FIGURE OUT HOW TO MATCH TIME FOR EACH SAMPLE!**
+
 ## testing
 ```{r}
 
