@@ -1,0 +1,47 @@
+---
+title: "Cleaning Offshore CTD cast Coords"
+author: "Camila Vargas"
+date: "10/22/2021"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+library (plyr)
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(lubridate)
+library(R.matlab)
+
+## Sets R not to use scientific notations
+options(scipen=999) 
+```
+
+## Read data
+```{r}
+
+ctd_coor_raw <- readMat(here::here("6.raw_data/Koweek_et_al_Offshore_CTD_cast_coordinates.mat"))
+
+```
+
+
+## Convert to DF
+```{r}
+
+
+df <- ctd_coor_raw %>% 
+  as_tibble() %>% 
+  rename(lon = "Offshore.CTD.Lon",
+         lat = "Offshore.CTD.Lat") %>% 
+  mutate(num = paste0("offshore_hy ", 1:7))
+
+
+```
+
+
+
