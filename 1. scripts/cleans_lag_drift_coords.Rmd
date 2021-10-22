@@ -1,0 +1,84 @@
+---
+title: "Cleaning Langrangian Drift coordinates"
+author: "Camila Vargas"
+date: "10/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+library (plyr)
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(lubridate)
+library(R.matlab)
+
+## Sets R not to use scientific notations
+options(scipen=999) 
+```
+
+## Read data
+```{r}
+
+lag_coor_raw <- readMat(here::here("6.raw_data/Koweek_et_al_Lagrangian_Drift_coordinates.mat"))
+
+```
+
+## Convert to DF
+```{r}
+col_n <- paste0("n_", 1:11)
+
+lat_df <- lag_coor_raw[1] %>% 
+  as_tibble() %>% 
+  unnest(cols = c(LD.Latitudes)) %>% 
+  separate(LD.Latitudes, col_n, sep = "\\,") %>% 
+  mutate(LD_num = paste0("LD ", 1:22),
+         n_1 = ifelse(n_1 == "numeric(0)", NA, n_1)) %>% 
+  pivot_longer(cols = 1:11,
+               names_to = "measurment_num",
+               values_to = "lat") %>% 
+  mutate(lat = str_replace_all(lat, c("c" = "", "\\(" = "", "\\)" = "")),
+         lat = str_trim(lat) %>% as.numeric())
+
+
+long_df <- lag_coor_raw[2] %>% 
+  as_tibble() %>% 
+  unnest(cols = c(LD.Longitudes)) %>% 
+  separate(LD.Longitudes, col_n, sep = "\\,") %>% 
+  mutate(LD_num = paste0("LD ", 1:22),
+         n_1 = ifelse(n_1 == "numeric(0)", NA, n_1)) %>% 
+  pivot_longer(cols = 1:11,
+               names_to = "measurment_num",
+               values_to = "long") %>% 
+  mutate(long = str_replace_all(long, c("c" = "", "\\(" = "", "\\)" = "")),
+         long = str_trim(long) %>% as.numeric())
+
+
+```
+
+
+## Match lat and long
+
+```{r}
+ld_coords_complete <- lat_df %>% 
+  left_join(long_df, by = c("LD_num", "measurment_num")) %>% 
+  filter(!is.na(lat))
+  
+mising_ld <- tibble(
+  LD_num = c("LD 1", "LD 2", "LD 8", "LD 11", "LD 14", "LD 17"),
+  measurment_num = NA,
+  lat = NA,
+  long = NA)
+  
+ld_coords_final <- ld_coords_complete %>% 
+  bind_rows(mising_ld) %>% 
+  arrange(LD_num)
+
+```
+
+
+
