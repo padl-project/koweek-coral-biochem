@@ -34,7 +34,19 @@ physical_raw <- readMat(here::here("6.raw_data/Koweek et al_Physical_Data.mat"))
 ## Convert to DF
 ```{r}
 ## rbinds all objects on the list and keeps the list name as .id
-physical_df <- ldply (pca_raw, data.frame)
+
+# tube_num <- c("id", paste0("tube_", 1:5))
+
+physical_df <- ldply (physical_raw, data.frame) %>% 
+  select("id" = ".id", tube_1 = X1, tube_2 = X2, tube_3 = X3, tube_4 = X4, tube_5 = X5, one_var = "X..i..")
+  
+```
+
+
+## Tube data
+
+```{r}
+tube_data <- 
 
 ```
 
