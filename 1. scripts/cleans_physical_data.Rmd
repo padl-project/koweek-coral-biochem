@@ -4,6 +4,34 @@ author: "Camila Vargas"
 date: "10/22/2021"
 output: html_document
 ---
+Information about this data set from David Koweek's README:
+
+1. Physical oceanographic data from Eulerian measurements at the SIB site
+File Name:  Koweek et al_Physical_Data.mat
+
+Column numbers correspond with tube numbers at the SIB site (i.e., column 1 in each variable corresponds with data collected from tube 1, column 2 corresponds with tube 2, etc.)
+
+Contains the following variables:
+
+**Eta_avg:** time-averaged free surface at SIB site (m)
+**PAR:** photosynthetically active radiation from meteorological station on Palmyra Atoll (μmol m^-2 s^-1)
+**Temp_bot:** bottom temperature (deg C)
+**Temp_mid:** temperature at mid water column (only at tubes 2 and 4) (deg C)
+**Temp_top:** near-surface water temperature (only at tubes 2 and 4) (deg C)
+**U_heading:** compass heading direction of water velocity (deg)
+**U_mag:** magnitude of water velocity (m s^-1)
+**airT:** air temperature from meteorological station on Palmyra Atoll (deg C)
+**density:** average water density across SIB site (kg m^-3)
+**depth:** depth (m)
+**mtime:** time vector in standard MATLAB format (days)
+**precip:** precipitation from meteorological station on Palmyra Atoll (mm hr^-1)
+**site_lat:** latitude of tubes (deg)
+**site_lon:** longitude of tubes (deg)
+**site_names:** names of all five tubes
+**tr_fr_sib:** travel time from forereef to SIB tubes (min)
+**tr_fr_sd:** travel time from foreeef to start of drift 16 (min)
+**wind_dir:** wind direction at 2m from NASA MERRA global model (deg)
+**wind_mag:** wind speed at 2m from NASA MERRA global model (m s^-1)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -38,7 +66,7 @@ physical_raw <- readMat(here::here("6.raw_data/Koweek et al_Physical_Data.mat"))
 # tube_num <- c("id", paste0("tube_", 1:5))
 
 physical_df <- ldply (physical_raw, data.frame) %>% 
-  select("id" = ".id", tube_1 = X1, tube_2 = X2, tube_3 = X3, tube_4 = X4, tube_5 = X5, one_var = "X..i..")
+  select("id" = ".id", tube1 = X1, tube2 = X2, tube3 = X3, tube4 = X4, tube5 = X5, one_var = "X..i..")
   
 ```
 
@@ -46,7 +74,92 @@ physical_df <- ldply (physical_raw, data.frame) %>%
 ## Tube data
 
 ```{r}
-tube_data <- 
+
+tube_var <- c("depth", "U.mag", "U.heading",  "Temp.bot","U.heading", "Temp.bot", "Temp.mid", "Temp.top", "tr.fr.sib")  
+
+
+tube_data <- physical_df %>% 
+  filter(id %in% tube_var) %>% 
+  mutate(position = rep(1:692, times = 7)) %>% 
+  select(-one_var) %>% 
+  pivot_longer(cols = 2:6,
+               names_to = "tube",
+               values_to = "measurement") %>% 
+  pivot_wider(id_cols = c(position, tube),
+            names_from = id,
+            values_from = "measurement")
+  
+ 
+   # group_by(id) %>% 
+   # tally()
+## Each variable as 692 observations
+```
+
+
+
+## Context data
+```{r}
+one_variable <- c("Eta.avg", "airT", "precip", "PAR", "wind.mag", "wind.dir", "density", "tr.fr.sd")
+
+one_var_data <- physical_df %>% 
+  dplyr::filter(id %in% one_variable) %>% 
+  mutate(position = rep(1:692, times = 8)) %>% 
+  select(id, one_var, position) %>% 
+  pivot_wider(id_cols = position,
+            names_from = id,
+            values_from = one_var)
+  
+
+test_count <- one_var_data %>% 
+  group_by(id) %>% 
+  tally()
+## Each variable has 692 observations
+
 
 ```
 
+## mtime: time vector in standard MATLAB format (days)
+We need to transform this into normal time
+
+```{r}
+
+time_data <- physical_df %>% 
+  filter(id == "mtime") %>% 
+  mutate(timestamp = as.POSIXct((one_var-719529)*86400, origin = "1970-01-01", tz = "HAST"),
+         position = 1:692) %>% 
+   select(timestamp, position)
+
+
+
+```
+
+
+## Combining all data
+```{r}
+
+one_var_complete <- time_data %>% 
+  left_join(one_var_data, by = "position")
+
+
+all_data <- tube_data %>% 
+  left_join(one_var_complete, by = "position")
+
+```
+
+
+
+## Lat long for each tube
+
+```{r}
+lat_long <- c("site.lat",  "site.lon")
+
+
+lat_long_data <- physical_df %>% 
+  filter(id %in% lat_long) %>% 
+  select(-one_var)
+
+```
+
+Physical data has been compile into one dataframe. A second file will be updated with the coords for each tube sampling.
+
+Next step: Check with Electronic supplementary material that compiling method is accurate.
