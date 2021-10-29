@@ -38,10 +38,18 @@ df <- ctd_coor_raw %>%
   as_tibble() %>% 
   rename(lon = "Offshore.CTD.Lon",
          lat = "Offshore.CTD.Lat") %>% 
-  mutate(num = paste0("offshore_hy ", 1:7))
+  mutate(ctd_num = paste0("offshore_ctd ", 1:7)) %>% 
+  select(ctd_num, lat, lon)
 
 
 ```
 
 
+## Save data
+
+```{r}
+
+write_csv(df, here::here("7.clean_data/2012_Koweek_et_al_offshore_ctd_cast_coords.csv"))
+
+```
 

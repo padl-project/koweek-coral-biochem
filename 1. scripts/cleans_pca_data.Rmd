@@ -7,6 +7,34 @@ output: html_document
 
 This scripts created matlab files into csvs and documents David's Koweek PCA data.
 
+3. Metabolic rate data from Lagrangian and Eulerian methods along with associated environmental and ecological conditions
+File Name: Koweek et al_PCA_data.mat
+
+Contains the following variables:
+
+**NCC:** Net community calcification (mmol m^-2 hr^-1)
+**NCC_SD:** 1 standard deviation error estimate on NCC (mmol m^-2 hr^-1)
+**NCP:** Net community production (mmol m^-2 hr^-1)
+**NCP_SD:** 1 standard deviation error estimate on NCP (mmol m^-2 hr^-1)
+**NCC_to_NCP:** Ratio of NCC to NCP
+**Fractional_Day:** Fractional time of day (days; e.g., 0600 hrs=0.25 days, 1200 hrs=0.5 days, 1800 hrs=0.75 days)
+**Water_Temperature:** Average water temperature during each metabolic rate measurement (deg C)
+**Air_Temperature:** Air temperature from meteorological station on Palmyra Atoll (deg C)
+**PAR:** photosynthetically active radiation from meteorological station on Palmyra Atoll (μmol m^-2 s^-1)
+**Precipitation:** precipitation from meteorological station on Palmyra Atoll (mm hr^-1)
+**Hard_Coral:** Average percentage of hard coral during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements (%)
+**Macroalgae:** Average percentage of macroalgae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements (%)
+**CCA:** Average percentage of crustose coralline algae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements (%)
+**Halimeda:** Average percentage of Halimeda spp. during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements (%)
+**Turf_Algae:** Average percentage of turf algae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements (%)
+**Calc_to_NonCalc:** Ratio of calcifiers to non-calcifiers during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements
+**Hard_Coral_to_Macroalgae:** Ratio of hard coral to macroalgae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements
+
+
+All variables are concatenated in the variable "All_data" according to the sequence listed in the variable "Column_labels_All_data".
+
+Note: The variable All_data (after removing "NCC_SD" and "NCP_SD") was Z-standardized to compute the PCA (Fig. 6). The covariance matrix on the Z-standardized data set was computed using 'pairwise' methods (i.e., Cov(i,j) was calculated using all rows in columns i and j for which data exists).
+
 
 ## Setup
 ```{r setup, include=FALSE}
@@ -41,6 +69,8 @@ pca_df <- ldply (pca_raw, data.frame)
 
 ## Row names
 
+From David's README:
+"Row_labels" lists the corresponding Lagrangian Drift (LD) number or time of Eulerian rate measurement at the SIB site. 
 ```{r}
 
 ld_number <- filter(pca_df, .id == "Row.labels") %>% 
@@ -51,6 +81,7 @@ ld_number <- filter(pca_df, .id == "Row.labels") %>%
   dplyr::mutate(padl_id = 1:dplyr::n()) %>% 
   select(-list_name)
 
+## 64 rows. 16 LD and 48 Eulerian rate measurment
 ```
 
 ## Colnames
@@ -70,6 +101,7 @@ col_names_vec <- pull(names_col, "colnames")
 Pulling out all concatenated data from master DF
 
 ```{r}
+
 all_data <- pca_df %>% 
   filter(.id == "All.data") %>% 
   select(2:18) %>% 
@@ -83,10 +115,18 @@ all_data <- pca_df %>%
 ```{r}
 pca_clean <- all_data %>% 
   left_join(ld_number, by = "padl_id") %>% 
-  select(LD_Eu = ld_SIB_row, everything(1:17)) %>% 
-  clean_names()
+  select(LD_Eu = ld_SIB_row, everything(1:17))
 ```
 
 
 **NEED TO CHECK WITH SUPPLEMENTSRY MATERIAL**
-Make sure that the order in all data matches the order in the row nams and col names.
+Make sure that the order in all data matches the order in the row names and col names.
+
+
+## Saving data
+```{r}
+
+write_csv(pca_clean, here::here("7.clean_data/2012_Koweek_et_al_pca_data.csv"))
+
+```
+

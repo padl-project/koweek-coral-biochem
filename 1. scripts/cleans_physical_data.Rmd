@@ -72,10 +72,11 @@ physical_df <- ldply (physical_raw, data.frame) %>%
 
 
 ## Tube data
+Filtering data that was collected from each tube. This means all variables that have data in columns 1 to 5.
 
 ```{r}
 
-tube_var <- c("depth", "U.mag", "U.heading",  "Temp.bot","U.heading", "Temp.bot", "Temp.mid", "Temp.top", "tr.fr.sib")  
+tube_var <- c("depth", "U.mag", "U.heading",  "Temp.bot","U.heading", "Temp.bot", "Temp.mid", "Temp.top", "tr.fr.sib")  ##9 variables
 
 
 tube_data <- physical_df %>% 
@@ -98,8 +99,10 @@ tube_data <- physical_df %>%
 
 
 ## Context data
+Filtering variables that are not directly measure by tube samples, this means they provide information about the setting and is the same across all tubes.
+
 ```{r}
-one_variable <- c("Eta.avg", "airT", "precip", "PAR", "wind.mag", "wind.dir", "density", "tr.fr.sd")
+one_variable <- c("Eta.avg", "airT", "precip", "PAR", "wind.mag", "wind.dir", "density", "tr.fr.sd") ##8 variables
 
 one_var_data <- physical_df %>% 
   dplyr::filter(id %in% one_variable) %>% 
@@ -110,15 +113,10 @@ one_var_data <- physical_df %>%
             values_from = one_var)
   
 
-test_count <- one_var_data %>% 
-  group_by(id) %>% 
-  tally()
-## Each variable has 692 observations
-
-
 ```
 
 ## mtime: time vector in standard MATLAB format (days)
+Timestamp for each of the 692 samples.
 We need to transform this into normal time
 
 ```{r}
@@ -128,8 +126,6 @@ time_data <- physical_df %>%
   mutate(timestamp = as.POSIXct((one_var-719529)*86400, origin = "1970-01-01", tz = "HAST"),
          position = 1:692) %>% 
    select(timestamp, position)
-
-
 
 ```
 
@@ -142,13 +138,14 @@ one_var_complete <- time_data %>%
 
 
 all_data <- tube_data %>% 
-  left_join(one_var_complete, by = "position")
+  left_join(one_var_complete, by = "position") %>% 
+  select(timestamp, tube, everything(), -position)
 
 ```
 
 
-
 ## Lat long for each tube
+Filtering geographic coodinate for eacha of the sample sites.
 
 ```{r}
 lat_long <- c("site.lat",  "site.lon")
@@ -156,10 +153,28 @@ lat_long <- c("site.lat",  "site.lon")
 
 lat_long_data <- physical_df %>% 
   filter(id %in% lat_long) %>% 
-  select(-one_var)
+  select(-one_var) %>% 
+  pivot_longer(cols = 2:6,
+               names_to = "tube",
+               values_to = "value") %>% 
+  pivot_wider(id_cols = tube,
+              names_from = id,
+              values_from = value)
 
 ```
 
 Physical data has been compile into one dataframe. A second file will be updated with the coords for each tube sampling.
 
-Next step: Check with Electronic supplementary material that compiling method is accurate.
+**Next step: Check with Electronic supplementary material that compiling method is accurate.**
+
+## Saving clean data
+
+```{r}
+write_csv(all_data, here::here("7.clean_data/2012_Koweek_et_al_physical_data.csv"))
+
+write_csv(lat_long_data, here::here("7.clean_data/2012_Koweek_et_al_eulerian_SIB_coords.csv"))
+
+```
+
+
+

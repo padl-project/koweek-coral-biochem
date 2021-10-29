@@ -8,6 +8,27 @@ output: html_document
 
 This scripts created matlab files into csvs and documents David's Koweek Biochemical data.
 
+Biogeochemical data from Eulerian measurements at the SIB site
+
+File Name: Koweek et al_Biogeochemical_Data.mat
+
+Column numbers correspond with tube numbers at the SIB site (i.e., column 1 in each variable corresponds with data collected from tube 1, column 2 corresponds with tube 2, etc.)
+Each variable matrix ends in suffixes "_20Sep", "2122Sep", or "25Sep" corresponding to data collected on 20 September 2012, 21-22 September 2012, and 25 September 2012, respectively.
+
+Contains the following variables:
+
+**Time:** time in standard MATLAB format (days)
+**S:** salinity (psu)-data presented in Fig. 3
+**DOuM:** dissolved oxygen (uM)
+**pH_calc:** pH (total scale) calculated from DIC and TA
+**pCO2:** pCO2 (uatm)
+**DIC:** dissolved inorganic carbon (umol kg^-1)
+**sDIC:** DIC salinity-normalized to 34.87 (umol kg^-1)
+**TA:** total alkalinity (umol kg^-1)
+**sTA:** TA salinity-normalized to 34.87 (umol kg^-1)
+**Omega_Ar:** aragonite saturation state calculated from DIC and TA
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -38,65 +59,76 @@ df <- ldply (biochem_raw, data.frame)
 
 ```
 
-There are 5 tubes.
-For each tubes we have:
-
-- Time: time in standard MATLAB format (days)
--S: salinity (psu)-data presented in Fig. 3
-- DOuM: dissolved oxygen (uM)
-- pH_calc: pH (total scale) calculated from DIC and TA
-- pCO2: pCO2 (uatm)
-- DIC: dissolved inorganic carbon (umol kg^-1)
-- sDIC: DIC salinity-normalized to 34.87 (umol kg^-1)
-- TA: total alkalinity (umol kg^-1)
-- sTA: TA salinity-normalized to 34.87 (umol kg^-1)
-- Omega_Ar: aragonite saturation state calculated from DIC and TA
-
 ## Oganizing and renaming
 
 ```{r}
 
-biochem_long <- df %>% 
+biochem_all <- df %>% 
   separate(col = ".id",
            into = c("variable", "col2", "date"),
            sep = "\\.") %>% 
-  dplyr::mutate(date = ifelse(is.na(date), col2, date)) %>% 
+  dplyr::mutate(date = ifelse(is.na(date), col2, date),
+                position = rep(1:120, times = 10)) %>% 
   dplyr::rename(
-         tube_1 = X1,
-         tube_2 = X2,
-         tube_3 = X3,
-         tube_4 = X4,
-         tube_5 = X5) %>% 
+         tube1 = X1,
+         tube2 = X2,
+         tube3 = X3,
+         tube4 = X4,
+         tube5 = X5) %>% 
   select(-col2) %>% 
   pivot_longer(cols = 3:7,
-               names_to = "sample_tube")
-
-
-time_cols <- biochem_long %>% 
-  filter(variable == "Time") %>% 
-   mutate(time = as.POSIXct((value-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>% 
-  select(-value)
-
-
-biochem_clean <- biochem_long %>% 
-  filter(variable != "Time") %>% 
-  bind_rows(time_cols) %>% 
-  
-  pivot_wider(id_cols = c(time, sample_tube, date),
-              values_from = value,
-              names_from = variable)
-  
-  
+               names_to = "tube") %>% 
+  pivot_wider(id_cols = c(date, position, tube),
+              names_from = "variable",
+              values_from = "value") %>% 
+  mutate(Time = as.POSIXct((Time-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>% 
+  select(Time, date, position, everything())
 
 ```
 
-**NEED TO FIGURE OUT HOW TO MATCH TIME FOR EACH SAMPLE!**
+Something is not matching! Biochem_all should be length 1200?? Is ther data missing from date Sept2122?
 
-## testing
+Re check math and what can be happening.
+Also, when plotting the data Salinity ans DIC for days 21 and 25 do not plot becasue they so not have a time associated. 
+WHAT IS HAPPENING??
+
+
+## Re-creating papers fig3 to check
 ```{r}
+plot_data <- biochem_all <- df %>% 
+  separate(col = ".id",
+           into = c("variable", "col2", "date"),
+           sep = "\\.") %>% 
+  dplyr::mutate(date = ifelse(is.na(date), col2, date),
+                position = rep(1:120, times = 10)) %>% 
+  dplyr::rename(
+         tube1 = X1,
+         tube2 = X2,
+         tube3 = X3,
+         tube4 = X4,
+         tube5 = X5) %>% 
+  select(-col2) %>% 
+  pivot_longer(cols = 3:7,
+               names_to = "tube")
 
-df_time <- ldply (biochem_raw[22], data.frame) %>% 
-  mutate(X1 = as.POSIXct((X1-719529)*86400, origin = "1970-01-01", tz = "HAST"))
+
+time_data <- plot_data %>% 
+  filter(variable == "Time") %>% 
+  mutate(time = as.POSIXct((value-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>% 
+  select(-variable)
+
+
+plot_data2 <- plot_data %>% 
+  left_join(time_data, by = c("position", "tube", "date"))
+  
+ggplot(plot_data2 %>% 
+         filter(variable != "Time"), 
+       aes(x = time, y = value, color = tube)) +
+           geom_point() +
+  facet_grid(variable ~ ., scales = "free") +
+           #facet_wrap(~variable, scales = "free") +
+           theme_bw()
+  
 
 ```
 
