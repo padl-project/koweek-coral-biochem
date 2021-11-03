@@ -5,6 +5,12 @@ date: "10/22/2021"
 output: html_document
 ---
 
+Southern offshore CTD cast GPS coordinates
+File Name: Koweek_et_al_Offshore_CTD_cast_coordinates.mat
+
+Contains the following variables:
+Offshore_CTD_Lat: Latitude of CTD casts conducted off Palmyra Atoll's southern fore reef
+Offshore_CTD_Lon: Longitude of CTD casts conducted off Palmyra Atoll's southern fore reef
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -33,14 +39,15 @@ ctd_coor_raw <- readMat(here::here("6.raw_data/Koweek_et_al_Offshore_CTD_cast_co
 ## Convert to DF
 ```{r}
 
-
 df <- ctd_coor_raw %>% 
   as_tibble() %>% 
-  rename(lon = "Offshore.CTD.Lon",
-         lat = "Offshore.CTD.Lat") %>% 
-  mutate(ctd_num = paste0("offshore_ctd ", 1:7)) %>% 
+  mutate(lon = Offshore.CTD.Lon,
+         lat = Offshore.CTD.Lat,
+         ctd_num = paste0("offshore_ctd ", 1:7)) %>% 
   select(ctd_num, lat, lon)
 
+## Saving error: Error: `x` must not contain list or matrix columns:x invalid columns at index(s): 2 3
+## Solution: mutate
 
 ```
 
