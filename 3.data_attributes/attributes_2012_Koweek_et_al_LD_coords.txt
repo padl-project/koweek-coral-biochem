@@ -1,0 +1,5 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+LD_num		character				
+measurment_num		categorical				
+lat		numeric	!Add units here!			
+long		numeric	!Add units here!			

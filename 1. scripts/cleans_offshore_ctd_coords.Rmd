@@ -9,8 +9,8 @@ Southern offshore CTD cast GPS coordinates
 File Name: Koweek_et_al_Offshore_CTD_cast_coordinates.mat
 
 Contains the following variables:
-Offshore_CTD_Lat: Latitude of CTD casts conducted off Palmyra Atoll's southern fore reef
-Offshore_CTD_Lon: Longitude of CTD casts conducted off Palmyra Atoll's southern fore reef
+**Offshore_CTD_Lat:** Latitude of CTD casts conducted off Palmyra Atoll's southern fore reef
+**Offshore_CTD_Lon:** Longitude of CTD casts conducted off Palmyra Atoll's southern fore reef
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -45,9 +45,12 @@ df <- ctd_coor_raw %>%
          lat = Offshore.CTD.Lat,
          ctd_num = paste0("offshore_ctd ", 1:7)) %>% 
   select(ctd_num, lat, lon)
+  mutate(longitud = lon,
+         latitud = lat) %>% 
+  select(-lon, -lat, )
 
 ## Saving error: Error: `x` must not contain list or matrix columns:x invalid columns at index(s): 2 3
-## Solution: mutate
+## Solution: use write.csv instead of write_csv
 
 ```
 
@@ -56,7 +59,7 @@ df <- ctd_coor_raw %>%
 
 ```{r}
 
-write_csv(df, here::here("7.clean_data/2012_Koweek_et_al_offshore_ctd_cast_coords.csv"))
+write.csv(df, here::here("7.clean_data/2012_Koweek_et_al_offshore_ctd_cast_coords.csv"), row.names = F)
 
 ```
 

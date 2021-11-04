@@ -1,7 +1,7 @@
 ---
-title: "ADD TILE"
-author: "ADD AUTHOR"
-date: "ADD DATE"
+title: "Environmental and ecological controls of coral community metabolism on Palmyra Atoll"
+author: "Koweek et al 2012"
+date: "11/03/2021"
 output: word_document
 ---
 
@@ -22,13 +22,18 @@ The information in this document will be used to create the EML of the data pack
 
 ## 1. Data Package Title
 
-
+Environmental and ecological controls of coral community metabolism on Palmyra Atoll
 
 
 ## 2. Dataset Title
 <!--_Include what, where, and when in the dataset title_-->
- - 
- - 
+ - 2012_Koweek_et_al_physical_data
+ - 2012_Koweek_et_al_eulerian_SIB_coords
+ - 2012_Koweek_et_al_biogeochem_eulerian_SIB
+ - 2012_Koweek_et_al_pca_data
+ - 2012_Koweek_et_al_offshore_ctd_cast_coords
+ - 2012_Koweek_et_al_LD_coords
+ 
  
 
 ## 3. Abstract
@@ -36,7 +41,18 @@ _Please provide an abstract specifically of the dataset. This is different from 
 
 [See example here](https://docs.google.com/document/d/1KdHJObHl5Bxxr9t0LISTwX0cCSVvx7NPUjz5T_P9JEc/edit#)
 
- 
+These data describes Palmyra Atoll coral reef Environmental and ecological controls of coral community metabolism. Data was collected on September 20, 21, 22 and 25, 2012. Data in this package was published under:
+Koweek, D., R. Dunbar, J. Rogers, G. Williams, N. Price, D. Mucciarone, and L. Teneva, Environmental and ecological controls of coral community metabolism on Palmyra Atoll Coral Reefs.
+
+There are six data files associated with Koweek et al.
+
+1. Physical oceanographic data from Eulerian measurements at the SIB site (data in Fig. 3 of the paper)
+2. SIB site coordinates for Eulerian measurements.
+3. Biogeochemical data from Eulerian measurements at the SIB site (data in Fig. 4 of the paper)
+4. Metabolic rate data (NCC, NCP) from Lagrangian and Eulerian methods along with associated environmental and ecological conditions (data in Figs. 2, 5, and 6 of the paper).
+5. Southern offshore CTD cast GPS coordinates (cast locations shown in Fig. 1 of the paper)
+6. GPS coordinates for all points along all Lagrangian Drift tracks (drift tracks shown in Fig. 1 of the paper)
+
 
 
 ## 4. Creators
@@ -46,11 +62,11 @@ _These are the people who will show up as authors in the dataset citation. These
 
 ```{r, creator table, echo = FALSE, message= FALSE, warning= FALSE}
 
-first_name <- c("", "")
+first_name <- c("David", "")
 middle_in <- c("", "")
-last_name <- c(" ", " ")
-organization <- c("", "")
-email <- c("", "")
+last_name <- c("Koweek", " ")
+organization <- c("Department of Environmental Earth System Science, Stanford University", "")
+email <- c("dkoweek@stanford.edu", "")
 orcid <- c("", "")
 
 creator_colname <- c("First Name", "Middle Initial", "Last Name", "Organization", "email address", "ORCID ID")
@@ -87,13 +103,13 @@ _You may also list other personnel who participated in the project (such as fiel
 
 ```{r, personnel table, echo = FALSE, message= FALSE, warning= FALSE}
 
-p_first_name <- c("", "Camila")
+p_first_name <- c("David", "Camila", "")
 p_middle_in <- c("", "", "")
-p_last_name <- c(" ", "Vargas Poulsen", " ")
-p_organization <- c(" ", "PADL Data Manager, University of California Santa Barbara")
-p_email <- c("", "camilavargas@ucsb.edu", " ")
+p_last_name <- c("Koweek", "Vargas Poulsen", " ")
+p_organization <- c("Department of Environmental Earth System Science, Stanford University", "PADL Data Manager, University of California Santa Barbara", "")
+p_email <- c("dkoweek@stanford.edu", "camilavargas@ucsb.edu", " ")
 p_orcid <- c("", "", "")
-p_role <- c("contact", "associated party")
+p_role <- c("contact", "associated party", "")
 
 personnel_colnames <- c("First Name", "Middle Initial", "Last Name", "Organization", "email address", "ORCID ID", "Role in project")
 
@@ -135,7 +151,12 @@ Attribution is required. CC licenses require that those who reuse a work provide
 _Using keywords from a controlled vocabulary (CV) will improve your data's future discovery and reuse.  The LTER CV is a good source for keywords. Access the [LTER CV here](https://vocab.lternet.edu/vocab/vocab/index.php).  Also, please determine one or two keywords that best describe your lab, station, and/or project (e.g., Trout Lake Station, NTL LTER).). Add as many rows to this table as needed_
 
 - Palmyra Atoll
-
+- Net community calcification
+- Net community production
+- Lagrangian drifts
+- Eulerian measurements
+- Coral reefs
+- Coral ecology
 
 
 
@@ -172,14 +193,13 @@ flextable::flextable(funding_table) %>%
 ```
 
 
-
 ## 9. Timeframe
 
 ```{r, timefram table, echo = FALSE, message= FALSE, warning= FALSE}
 
 Information <- c("Begin date", "End date", "Is data collection ongoing or completed?")
 
-Description <- c(" ", "", "Completed")
+Description <- c("September 2012 ", "September 2012", "Completed")
 
 timeframe_table <- tibble(Information, Description)
 
@@ -241,10 +261,10 @@ _Is this data derived from other data? If so, you will want to document this inf
 
 ```{r, data provenance, echo = FALSE, message= FALSE, warning= FALSE}
 
-data_title <- c(" ", " ")
-data_doi_url <- c("", "")
-creator_name <- c("", "")
-contact_email <- c("", "")
+data_title <- c("Coral Community Metabolism Data From the Palmyra Atoll, from 2012-08-01 to 2012-10-01", " ")
+data_doi_url <- c("gov.noaa.nodc:0121946", "")
+creator_name <- c("David Koweek", "")
+contact_email <- c("dkoweek@stanford.edu", "")
 
 provenance_colnames <- c("Dataset title", "Dataset DOI or URL", "Creator Name", "Contact Email")
 
@@ -259,7 +279,8 @@ colnames(provenance_table) <- provenance_colnames
 ```{r, provence table, export, echo=FALSE, message= FALSE, warning= FALSE}
 
 flextable::flextable(provenance_table) %>% 
-  autofit(add_w = 0.2, add_h = 0.1, part = c("body", "header"), unit = "in")
+  width(width = 1)
+  #autofit(add_w = 0.2, add_h = 0.1, part = c("body", "header"), unit = "in")
 ```
 
 
@@ -283,26 +304,43 @@ Each row in the below table describes one column in your data table.  Complete e
 
 ## Location of datasets in the package
 
-# **UPDATE NAMES**
 
-path_data <- here::here("clean_data")
-path_templates <- here::here("data_attributes")
-file1_name <- "FILE NAME"
-file2_name <- "FILE NAME"
+path_data <- here::here("7.clean_data")
+path_templates <- here::here("3.data_attributes")
 
+
+files_names <- tibble(
+  list.files(path_data, pattern = "csv")) %>% 
+  rename(file_name = 1) %>% 
+  mutate(file_name = str_remove(file_name, ".csv"),
+         attribute_name = paste0("data_attributes", 1:n()),
+         position = 1:n())
 
 ## Creating the attribute .txt
-EMLassemblyline::template_table_attributes(
-  path = path_templates,
-  data.path = path_data,
-  data.table = paste0(file1_name, ".csv"))
+
+# for (i in files_names$file_name){
+#   
+#   EMLassemblyline::template_table_attributes(
+#   path = path_templates,
+#   data.path = path_data,
+#   data.table = paste0(i, ".csv"))
+# }
+
 
 ## reading text into a data frame
-data_attributes1 <- read.delim2(here::here(paste0("data_attributes/attributes_", file1_name, ".txt"))) %>% 
-  mutate(unit = case_when(unit == "!Add units here!" ~ "*"))
 
-data_attributes2 <- read.delim2(here::here(paste0("data_attributes/attributes_", file2_name, ".txt"))) %>% 
+##General function
+read_attribute <- function(test){
+  
+  read.delim2(here::here(paste0("3.data_attributes/attributes_", test, ".txt"))) %>% 
   mutate(unit = case_when(unit == "!Add units here!" ~ "*"))
+}
+
+for (i in files_names$position){
+  
+  assign(files_names$attribute_name[i], read_attribute(files_names$file_name[i]))
+
+  }
 
 
 ```
@@ -324,6 +362,30 @@ flextable::flextable(data_attributes2) %>%
 
 ```
 
+
+```{r, attribute table 3, echo=FALSE, message= FALSE, warning= FALSE}
+
+flextable::flextable(data_attributes3) %>% 
+  width(width = 1)
+
+```
+
+
+```{r, attribute table 4, echo=FALSE, message= FALSE, warning= FALSE}
+
+flextable::flextable(data_attributes4) %>% 
+  width(width = 1)
+
+```
+
+```{r, attribute table 5, echo=FALSE, message= FALSE, warning= FALSE}
+
+flextable::flextable(data_attributes5) %>% 
+  width(width = 1)
+
+```
+
+
 ## 14. Attributes code
 
 _If you use codes in your column, please define each code in the following table. **Fill in only if necessary**_ 
@@ -332,14 +394,14 @@ _If you use codes in your column, please define each code in the following table
 
 ```{r, attribute code, echo = FALSE, message= FALSE, warning= FALSE}
 
-## Note: there can only be one file with he prefix attribute_ in the data attribute folder.
-EMLassemblyline::template_categorical_variables(
-  path = path_templates,
-  data.path = path_data)
+## Note: scanns through all the attribute_ files in the file path
+# EMLassemblyline::template_categorical_variables(
+#   path = path_templates,
+#   data.path = path_data)
 
 # **UPDATE NAMES**
 
-cat_vars <- read.delim2(here::here("data_attributes/catvars_FILE NAME.txt"))
+cat_vars <- read.delim2(here::here("3.data_attributes/catvars_2012_Koweek_et_al_LD_coords.txt"))
 
 ```
 
@@ -439,9 +501,9 @@ _List articles citing this dataset. Add as many rows as necessary_
 
 ```{r, publications, echo = FALSE, message= FALSE, warning= FALSE}
 
-doi <- " "
-article_title <- " "
-journal <- " "
+doi <- "10.1007/s00338-014-1217-3"
+article_title <- "Environmental and ecological controls of coral community metabolism on Palmyra Atoll"
+journal <- "Coral Reefs"
 
 
 publications_colnames <- c("Article DOI or URL (DOI is preferred)", "Article title", "Journal title")

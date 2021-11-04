@@ -9,6 +9,8 @@ Information about this data set from David Koweek's README:
 1. Physical oceanographic data from Eulerian measurements at the SIB site
 File Name:  Koweek et al_Physical_Data.mat
 
+Data in Fig 3 of the paper 
+
 Column numbers correspond with tube numbers at the SIB site (i.e., column 1 in each variable corresponds with data collected from tube 1, column 2 corresponds with tube 2, etc.)
 
 Contains the following variables:
@@ -145,10 +147,10 @@ all_data <- tube_data %>%
 
 
 ## Lat long for each tube
-Filtering geographic coodinate for eacha of the sample sites.
+Filtering geographic coordinate for each of the sample sites.
 
 ```{r}
-lat_long <- c("site.lat",  "site.lon")
+lat_long <- c("site.lat",  "site.lon") ##"site.names" are just NAs but tube 1- 5 correspond to site T1-T5 in Figure 1.
 
 
 lat_long_data <- physical_df %>% 
@@ -163,9 +165,30 @@ lat_long_data <- physical_df %>%
 
 ```
 
-Physical data has been compile into one dataframe. A second file will be updated with the coords for each tube sampling.
+## Check: Recreating figure 3
+
+```{r}
+plot_data <- all_data %>% 
+  pivot_longer(cols = 3:17,
+               names_to = "variable")
+
+  
+ggplot(plot_data %>% 
+         filter(variable %in% c("PAR", "Eta.avg", "Temp.mid", "U.heading", "U.mag", "tr.fr.sib")), 
+       aes(x = timestamp, y = value, color = tube)) +
+           geom_line() +
+  facet_grid(variable ~ ., scales = "free") +
+           #facet_wrap(~variable, scales = "free") +
+           theme_bw()
+```
+
+Success! Plot looks like a less sophisticated version of figure 3.
+
+
+Physical data has been compile into one data frame. A second file will be updated with the coords for each tube sampling.
 
 **Next step: Check with Electronic supplementary material that compiling method is accurate.**
+No information found in ESM. But, given that we were able to recreate figure 3 we assume that matching was done correctly according to the position of each row of data.
 
 ## Saving clean data
 

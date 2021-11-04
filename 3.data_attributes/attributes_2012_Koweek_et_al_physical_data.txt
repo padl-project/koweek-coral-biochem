@@ -1,0 +1,18 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+timestamp		Date		!Add datetime specifier here!		
+tube		character				
+depth		numeric	!Add units here!			
+U.mag		numeric	!Add units here!			
+U.heading		numeric	!Add units here!			
+Temp.bot		numeric	!Add units here!			
+Temp.mid		numeric	!Add units here!			
+Temp.top		numeric	!Add units here!			
+tr.fr.sib		numeric	!Add units here!			
+Eta.avg		numeric	!Add units here!			
+airT		numeric	!Add units here!			
+precip		numeric	!Add units here!			
+PAR		numeric	!Add units here!			
+wind.mag		numeric	!Add units here!			
+wind.dir		numeric	!Add units here!			
+density		numeric	!Add units here!			
+tr.fr.sd		numeric	!Add units here!			

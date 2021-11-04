@@ -115,12 +115,22 @@ all_data <- pca_df %>%
 ```{r}
 pca_clean <- all_data %>% 
   left_join(ld_number, by = "padl_id") %>% 
-  select(LD_Eu = ld_SIB_row, everything(1:17))
+  select(LD_Eu = ld_SIB_row, everything(1:17)) %>% 
+  clean_names()
 ```
 
 
 **NEED TO CHECK WITH SUPPLEMENTSRY MATERIAL**
 Make sure that the order in all data matches the order in the row names and col names.
+
+No answer in the ESM. Se here we assume that the order of all.data matches the order on list with row names.
+
+## Check: Re-creating figure 6 to make sure data is correct
+
+```{r}
+prcomp()
+
+```
 
 
 ## Saving data

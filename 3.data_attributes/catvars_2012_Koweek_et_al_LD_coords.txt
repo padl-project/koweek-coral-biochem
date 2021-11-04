@@ -1,0 +1,13 @@
+attributeName	code	definition
+measurment_num	n1	
+measurment_num	n10	
+measurment_num	n11	
+measurment_num	n2	
+measurment_num	n3	
+measurment_num	n4	
+measurment_num	n5	
+measurment_num	n6	
+measurment_num	n7	
+measurment_num	n8	
+measurment_num	n9	
+measurment_num	NA	

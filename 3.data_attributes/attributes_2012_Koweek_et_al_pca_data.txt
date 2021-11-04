@@ -1,0 +1,19 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+ld_eu		character				
+ncc		numeric	!Add units here!			
+ncc_sd		numeric	!Add units here!			
+ncp		numeric	!Add units here!			
+ncp_sd		numeric	!Add units here!			
+ncc_ncp		numeric	!Add units here!			
+fractional_day		Date		!Add datetime specifier here!		
+water_temperature		numeric	!Add units here!			
+air_temperature		numeric	!Add units here!			
+par		numeric	!Add units here!			
+precipitation		numeric	!Add units here!			
+hard_coral		numeric	!Add units here!			
+macroalgae		numeric	!Add units here!			
+cca		numeric	!Add units here!			
+halimeda		numeric	!Add units here!			
+turf_algae		numeric	!Add units here!			
+calcifiers_non_calcifiers		numeric	!Add units here!			
+hard_coral_macroalgae		numeric	!Add units here!			
