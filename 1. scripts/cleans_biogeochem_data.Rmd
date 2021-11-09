@@ -40,10 +40,12 @@ library(readxl)
 library(janitor)
 library(lubridate)
 library(R.matlab)
+library(freeR)
 
 
 ## Sets R not to use scientific notations
 options(scipen=999) 
+
 ```
 
 
@@ -58,30 +60,42 @@ biochem_raw <- readMat(here::here("6.raw_data/Koweek et al_Biogeochemical_Data.m
 df <- ldply (biochem_raw, data.frame)
 
 ```
+Each X column is a tube
+.id has date and variable name
 
 ## Oganizing and renaming
 
 ```{r}
-biochem_all <- df %>% 
+biochem_long <- df %>% 
   separate(col = ".id",
            into = c("variable", "col2", "date"),
            sep = "\\.") %>% 
-  dplyr::mutate(date = ifelse(is.na(date), col2, date),
-                position = rep(1:120, times = 10)) %>% 
+  dplyr::mutate(date = ifelse(is.na(date), col2, date)) %>% 
   dplyr::rename(
          tube1 = X1,
          tube2 = X2,
          tube3 = X3,
          tube4 = X4,
          tube5 = X5) %>% 
+  arrange(variable, date) %>% 
+  dplyr::mutate(position = rep(1:120, times = 10)) %>% 
   select(-col2) %>% 
   pivot_longer(cols = 3:7, ##all tube columns
-               names_to = "tube") %>% 
+               names_to = "tube")
+
+
+time_data <-  biochem_long %>% 
+  filter(variable == "Time") %>% 
+  mutate(Time = as.POSIXct((value-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>%
+  select(-value)
+
+biochem_wide <- biochem_long %>% 
+  filter(variable != "Time") %>% 
   pivot_wider(id_cols = c(date, position, tube),
               names_from = "variable",
               values_from = "value") %>% 
-  mutate(Time = as.POSIXct((Time-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>% 
-  select(Time, date, position, everything())
+  left_join(time_data, by = c("date", "position", "tube")) %>% 
+  select(Time, date, everything(), -position)
 
 ```
 
@@ -91,71 +105,60 @@ Re check math and what can be happening.
 Also, when plotting the data Salinity ans DIC for days 21 and 25 do not plot because they do not have a time associated. 
 WHAT IS HAPPENING??
 
+The way we were assigning the position was not right that is why we were getting a longer data set than expected.
+Problem fixed!
+
+The wide data frame has a length of 600. This means 120 samples (17 Sept 20, 79 Sept 21-22 and 24 Sept 25) times 5 tubes.
+
 ## Checknig
 ```{r}
-test_long <- biochem_all_long %>% 
-  group_by(position) %>% 
+test <- biochem_wide %>% 
+  group_by(date) %>% 
   tally()
 
 View(test)
 
-biochem_all_long <- df %>% 
-  separate(col = ".id",
-           into = c("variable", "col2", "date"),
-           sep = "\\.") %>% 
-  dplyr::mutate(date = ifelse(is.na(date), col2, date),
-                position = rep(1:120, times = 10)) %>% 
-  dplyr::rename(
-         tube1 = X1,
-         tube2 = X2,
-         tube3 = X3,
-         tube4 = X4,
-         tube5 = X5) %>% 
-  select(-col2) %>% 
-  pivot_longer(cols = 3:7, ##all tube columns
-               names_to = "tube") 
+test_2 <- biochem_wide %>% 
+  group_by(tube) %>% 
+  tally()
 
+View(test_2)
+
+test_3 <- biochem_wide %>% 
+  group_by(date,tube) %>% 
+  tally()
+
+View(test_3)
 
 ```
 
 
 
-## Re-creating papers fig3 to check
+## Re-creating papers fig4 to check
 ```{r}
-plot_data <- biochem_all <- df %>% 
-  separate(col = ".id",
-           into = c("variable", "col2", "date"),
-           sep = "\\.") %>% 
-  dplyr::mutate(date = ifelse(is.na(date), col2, date),
-                position = rep(1:120, times = 10)) %>% 
-  dplyr::rename(
-         tube1 = X1,
-         tube2 = X2,
-         tube3 = X3,
-         tube4 = X4,
-         tube5 = X5) %>% 
-  select(-col2) %>% 
-  pivot_longer(cols = 3:7,
-               names_to = "tube")
 
 
-time_data <- plot_data %>% 
-  filter(variable == "Time") %>% 
-  mutate(time = as.POSIXct((value-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>% 
-  select(-variable)
-
-
-plot_data2 <- plot_data %>% 
-  left_join(time_data, by = c("position", "tube", "date"))
+plot_data <- biochem_long %>%
+  filter(variable != "Time") %>% 
+  left_join(time_data, by = c("position", "tube", "date")) %>% 
+  select(-variable.y)
   
-ggplot(plot_data2 %>% 
-         filter(variable != "Time"), 
-       aes(x = time, y = value, color = tube)) +
-           geom_point() +
-  facet_grid(variable ~ ., scales = "free") +
+ggplot(plot_data, 
+       aes(x = Time, y = value, color = tube)) +
+           geom_line() +
+  facet_grid(variable.x ~ ., scales = "free") +
            #facet_wrap(~variable, scales = "free") +
            theme_bw()
   
 
 ```
+
+Looks good!!!
+
+
+## Save data
+```{r}
+write_csv(biochem_wide, here::here("7.clean_data/2012_Koweek_biogeochemical_data.csv"))
+```
+
 
