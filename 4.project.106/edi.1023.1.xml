@@ -1,0 +1,1434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <eml:eml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" packageId="edi.1023.1" system="https://pasta.edirepository.org"
+    xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2"
+    xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://nis.lternet.edu/schemas/EML/eml-2.2.0/xsd/eml.xsd">
+   
+    <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
+    <allow>
+      <principal>uid=palmyra_project,o=EDI,dc=edirepository,dc=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>public</principal>
+      <permission>read</permission>
+    </allow>
+  </access>
+  <dataset>
+    <title>Environmental and ecological controls of coral community metabolism on Palmyra Atoll</title>
+    <creator>
+      <individualName>
+        <givenName>David</givenName>
+        <surName>Koweek</surName>
+      </individualName>
+      <organizationName>Department of Environmental Earth System Science, Stanford University</organizationName>
+      <electronicMailAddress>dkoweek@stanford.edu</electronicMailAddress>
+    </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Camila</givenName>
+        <surName>Vargas Poulsen</surName>
+      </individualName>
+      <organizationName>PADL Data Manager, Univerity of California Santa Barbara</organizationName>
+      <electronicMailAddress>camilavargas@ucsb.edu</electronicMailAddress>
+      <role>associated party</role>
+    </associatedParty>
+    <pubDate>2021-11-10</pubDate>
+    <abstract>
+      <para>
+    These data sets describe Palmyra Atoll coral reef Environmental and
+    ecological controls of coral community metabolism. Data was
+    collected between August—October 2012. Data in this package was
+    published under: Koweek, D., R. Dunbar, J. Rogers, G. Williams, N.
+    Price, D. Mucciarone, and L. Teneva, Environmental and ecological
+    controls of coral community metabolism on Palmyra Atoll Coral Reefs.
+  </para>
+      <para>
+    There are six data files associated with Koweek et al.
+  </para>
+      <para>
+    This data was originally published at NOAA’s National Center for
+    Environmental Information. See Data Provenance section for more
+    details. 
+  </para>
+    </abstract>
+    <keywordSet>
+      <keyword>Palmyra Atoll</keyword>
+      <keyword>Net community calcification</keyword>
+      <keyword>Net community production</keyword>
+      <keyword>Lagrangian drifts</keyword>
+      <keyword>Eulerian measurements</keyword>
+      <keyword>Coral reefs</keyword>
+      <keyword>Coral ecology</keyword>
+      <keyword>ARAGONITE SATURATION STATE</keyword>
+      <keyword>CALCIFICATION</keyword>
+      <keyword>CORAL - CENSUS</keyword>
+      <keyword>CURRENT SPEED</keyword>
+      <keyword>DISSOLVED INORGANIC CARBON (DIC)</keyword>
+      <keyword>DISSOLVED OXYGEN</keyword>
+      <keyword>partial pressure of carbon dioxide - water</keyword>
+      <keyword>pH</keyword>
+      <keyword>PHOTOSYNTHETIC ACTIVE RADIATION (PAR)</keyword>
+      <keyword>total alkalinity</keyword>
+      <keyword>WATER DENSITY</keyword>
+      <keyword>water depth</keyword>
+      <keyword>WATER TEMPERATURE</keyword>
+      <keyword>WIND SPEED</keyword>
+      <keyword>water chemistry</keyword>
+      <keywordThesaurus>none</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>
+      <para>
+    This information is released under the Creative Commons license -
+    Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/).
+    The consumer of these data (</para>
+      <para>
+        <emphasis></emphasis>
+      </para>
+      <para> herein) is
+    required to cite it appropriately in any publication that results
+    from its use. The Data User should realize that these data may be
+    actively used by others for ongoing research and that coordination
+    may be necessary to prevent duplicate publication. The Data User is
+    urged to contact the authors of these data if any questions about
+    methodology or results occur. Where appropriate, the Data User is
+    encouraged to consider collaboration or co-authorship with the
+    authors. The Data User should realize that misinterpretation of data
+    may occur if used out of context of the original study. While
+    substantial efforts are made to ensure the accuracy of data and
+    associated documentation, complete accuracy of data sets cannot be
+    guaranteed. All data are made available </para>
+      <para>
+      </para>
+      <para> The
+    Data User should be aware, however, that data are updated
+    periodically and it is the responsibility of the Data User to check
+    for new versions of the data. The data authors and the repository
+    where these data were obtained shall not be liable for damages
+    resulting from any use or misinterpretation of the data. Thank you.
+  </para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Palmyra Atoll</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-162.083</westBoundingCoordinate>
+          <eastBoundingCoordinate>-162.043</eastBoundingCoordinate>
+          <northBoundingCoordinate>5.88333</northBoundingCoordinate>
+          <southBoundingCoordinate>5.871</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2012</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2012</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <maintenance>
+      <description>Completed</description>
+    </maintenance>
+    <contact>
+      <individualName>
+        <givenName>David</givenName>
+        <surName>Koweek</surName>
+      </individualName>
+      <organizationName>Department of Environmental Earth System Science, Stanford University</organizationName>
+      <electronicMailAddress>dkoweek@stanford.edu</electronicMailAddress>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para>
+    Please see Koweek et al 2014 for detailed methods and
+    instrumentation on how this data was collected.
+  </para>
+          <para>
+    https://web.stanford.edu/~jsrogers/Koweek%20et%20al.%202014%20Environmental%20and%20ecological%20controls%20of%20coral%20community.pdf
+  </para>
+          <para>
+    See the Palmyra Atoll Data Library Github for details on how matlab
+    files were converted into .csv
+  </para>
+          <para>
+    https://github.com/padl-project/koweek-coral-biochem
+  </para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>No project title to report</title>
+      <personnel>
+        <individualName>
+          <givenName>David</givenName>
+          <surName>Koweek</surName>
+        </individualName>
+        <organizationName>Department of Environmental Earth System Science, Stanford University</organizationName>
+        <electronicMailAddress>dkoweek@stanford.edu</electronicMailAddress>
+        <role>Principal Investigator</role>
+      </personnel>
+      <funding>No funding to report</funding>
+    </project>
+    <dataTable>
+      <entityName>Koweek et al Biogeochemical data from Eulerian measurements at Palmyra Atoll 2012</entityName>
+      <entityDescription>Biogeochemical data from Eulerian measurements at the SIB site (data in Fig. 4 of the paper)
+</entityDescription>
+      <physical>
+        <objectName>2012_Koweek_biogeochemical_data.csv</objectName>
+        <size unit="bytes">67856</size>
+        <authentication method="MD5">68c4704f002d418b4bbb7885660cd88f</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>NA2012_Koweek_biogeochemical_data.csv</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>Time</attributeName>
+          <attributeDefinition>Time and date of sampling</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD HH:MM:SS</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>date</attributeName>
+          <attributeDefinition>Date when data was collected</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>DDMM</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>tube</attributeName>
+          <attributeDefinition>Tube number at the SIB site</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Tube number at the SIB site</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>DIC</attributeName>
+          <attributeDefinition>dissolved inorganic carbon</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microMolesPerKilogram</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1851.758195</minimum>
+                  <maximum exclusive="false">1999.344053</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>DOuM</attributeName>
+          <attributeDefinition>dissolved oxygen</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microMolesPerLiter</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">165.7897872</minimum>
+                  <maximum exclusive="false">279.1413333</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Ar</attributeName>
+          <attributeDefinition>aragonite saturation state calculated from DIC and TA</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>Omega</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">3.111143053</minimum>
+                  <maximum exclusive="false">4.175339248</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>pCO2</attributeName>
+          <attributeDefinition>pCO2</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microatmosphere</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">317.9225225</minimum>
+                  <maximum exclusive="false">513.0366071</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>pH</attributeName>
+          <attributeDefinition>pH (total scale) calculated from DIC and TA</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>pH</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">7.946578419</minimum>
+                  <maximum exclusive="false">8.099128377</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>S</attributeName>
+          <attributeDefinition>salinity (psu)-data presented in Fig. 3</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>PracticalSalinityUnit</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">33.21062857</minimum>
+                  <maximum exclusive="false">34.89498409</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>sDIC</attributeName>
+          <attributeDefinition>DIC salinity-normalized to 34.87</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microMolesPerKilogram</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1853.924934</minimum>
+                  <maximum exclusive="false">2007.333168</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>sTA</attributeName>
+          <attributeDefinition>TA salinity-normalized to 34.87</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microMolesPerKilogram</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2225.214848</minimum>
+                  <maximum exclusive="false">2284.235824</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>TA</attributeName>
+          <attributeDefinition>total alkalinity</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>microMolesPerKilogram</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2211.653869</minimum>
+                  <maximum exclusive="false">2281.067773</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>600</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>Koweek et al Eulerian mesurements sites coordinates, Palmyra Atoll 2012</entityName>
+      <entityDescription>SIB site coordinates for Eulerian measurements</entityDescription>
+      <physical>
+        <objectName>2012_Koweek_eulerian_SIB_coords.csv</objectName>
+        <size unit="bytes">237</size>
+        <authentication method="MD5">137e1deaab750663b8d24e43cc6841ce</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>NA2012_Koweek_eulerian_SIB_coords.csv</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>tube</attributeName>
+          <attributeDefinition>Tube number at the SIB site</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Tube number at the SIB site</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>site.lat</attributeName>
+          <attributeDefinition>latitude coordinate</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">5.87321111111111</minimum>
+                  <maximum exclusive="false">5.87373611111111</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>site.lon</attributeName>
+          <attributeDefinition>longitudinal coordinate</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-162.110558333333</minimum>
+                  <maximum exclusive="false">-162.10985</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>5</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>Koweek et al Lagrangian drifts coordinates, Palmyra Atoll 2012</entityName>
+      <entityDescription>GPS coordinates for all points along all Lagrangian Drift tracks (drift tracks shown in Fig. 1 of the paper)
+</entityDescription>
+      <physical>
+        <objectName>2012_Koweek_LD_coords.csv</objectName>
+        <size unit="bytes">4338</size>
+        <authentication method="MD5">3be62a5263235a9dbe1da299cfcfcaf5</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>NA2012_Koweek_LD_coords.csv</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>LD_num</attributeName>
+          <attributeDefinition>Identification number of each lagrangian drift</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Identification number of each lagrangian drift</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>measurment_num</attributeName>
+          <attributeDefinition>position of the coordinate along the lagrangian drift</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>position of the coordinate along the lagrangian drift</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lat</attributeName>
+          <attributeDefinition>latitude coordinate</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">5.87041693</minimum>
+                  <maximum exclusive="false">5.8953152</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>long</attributeName>
+          <attributeDefinition>longitude coordinate</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-162.12663287</minimum>
+                  <maximum exclusive="false">-162.10424665</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>132</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>Koweek et al offshhore CTD cast coords, Palmyra Atoll 2012</entityName>
+      <entityDescription>Southern offshore CTD cast GPS coordinates (cast locations shown in Fig. 1 of the paper)</entityDescription>
+      <physical>
+        <objectName>2012_Koweek_offshore_ctd_cast_coords.csv</objectName>
+        <size unit="bytes">288</size>
+        <authentication method="MD5">0bdcce18bfdaa69948908501cb715256</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>NA2012_Koweek_offshore_ctd_cast_coords.csv</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>ctd_num</attributeName>
+          <attributeDefinition>ctd cast id number</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>ctd cast id number</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lat</attributeName>
+          <attributeDefinition>Latitude of CTD casts conducted off Palmyra Atoll's southern fore reef</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">5.837483333</minimum>
+                  <maximum exclusive="false">5.863566667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lon</attributeName>
+          <attributeDefinition>Longitude of CTD casts conducted off Palmyra Atoll's southern fore reef</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-162.1156</minimum>
+                  <maximum exclusive="false">-162.0906</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>7</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>Koweek et al Metabolice rate data for PCA, Palmyra Atoll 2012</entityName>
+      <entityDescription>Metabolic rate data (NCC, NCP) from Lagrangian and Eulerian methods along with associated environmental and ecological conditions (data in Figs. 2, 5, and 6 of the paper</entityDescription>
+      <physical>
+        <objectName>2012_Koweek_pca_data.csv</objectName>
+        <size unit="bytes">19520</size>
+        <authentication method="MD5">5636d05c40cf8d2300a510dde101c5d6</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>NA2012_Koweek_pca_data.csv</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>ld_eu</attributeName>
+          <attributeDefinition>Method and number of measurements. Either lagrangian (LD) or Eulerian (eg: SIB site Eulerian rate 2012/09/20 10:52) method</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Method and number of measurements. Either lagrangian (LD) or Eulerian (eg: SIB site Eulerian rate 2012/09/20 10:52) method</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ncc</attributeName>
+          <attributeDefinition>Net community calcification</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>millimolesPerSquareMeterPerHour</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-51.3541798955268</minimum>
+                  <maximum exclusive="false">115.932121375512</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ncc_sd</attributeName>
+          <attributeDefinition>1 standard deviation error estimate on NCC</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>millimolesPerSquareMeterPerHour</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2.79276233724963</minimum>
+                  <maximum exclusive="false">94.5592295348213</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ncp</attributeName>
+          <attributeDefinition>Net community production</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>millimolesPerSquareMeterPerHour</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-55.2189921781781</minimum>
+                  <maximum exclusive="false">177.061055873077</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ncp_sd</attributeName>
+          <attributeDefinition>1 standard deviation error estimate on NCP</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>millimolesPerSquareMeterPerHour</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">4.99559893017839</minimum>
+                  <maximum exclusive="false">149.031757850319</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>ncc_ncp</attributeName>
+          <attributeDefinition>Ratio of NCC to NCP</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>ratio</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-2.42705441914765</minimum>
+                  <maximum exclusive="false">10.2087737954394</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>fractional_day</attributeName>
+          <attributeDefinition>Fractional time of day (days; e.g., 0600 hrs=0.25 days, 1200 hrs=0.5 days, 1800 hrs=0.75 days)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>fraction</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.0228125000139698</minimum>
+                  <maximum exclusive="false">0.939386574085802</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>water_temperature</attributeName>
+          <attributeDefinition>Average water temperature during each metabolic rate measurement</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">28.4494693085642</minimum>
+                  <maximum exclusive="false">29.8370015083624</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>air_temperature</attributeName>
+          <attributeDefinition>Air temperature from meteorological station on Palmyra Atoll</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">24.3283333327559</minimum>
+                  <maximum exclusive="false">29.6149999996088</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>par</attributeName>
+          <attributeDefinition>photosynthetically active radiation from meteorological station on Palmyra Atoll</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>micromolePerMeterSquaredPerSecond</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.00263105487084558</minimum>
+                  <maximum exclusive="false">1797.96888903164</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>precipitation</attributeName>
+          <attributeDefinition>precipitation from meteorological station on Palmyra Atoll</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>millimetersPerHour</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">18.6700000003632</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>hard_coral</attributeName>
+          <attributeDefinition>Average percentage of hard coral during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">18.0019356029586</minimum>
+                  <maximum exclusive="false">56.4009054848649</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>macroalgae</attributeName>
+          <attributeDefinition>Average percentage of macroalgae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2.73215251566928</minimum>
+                  <maximum exclusive="false">10.3985619892177</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>cca</attributeName>
+          <attributeDefinition>Average percentage of crustose coralline algae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">13.0520002661792</minimum>
+                  <maximum exclusive="false">36.6869329860955</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>halimeda</attributeName>
+          <attributeDefinition>Average percentage of Halimeda spp. during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1.14680924745747</minimum>
+                  <maximum exclusive="false">5.35747128581261</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>turf_algae</attributeName>
+          <attributeDefinition>Average percentage of turf algae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>percentage</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">10.9929609566705</minimum>
+                  <maximum exclusive="false">23.9946233062925</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>calcifiers_non_calcifiers</attributeName>
+          <attributeDefinition>Ratio of calcifiers to non-calcifiers during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>ratio</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.27106984898846</minimum>
+                  <maximum exclusive="false">1.79899848344448</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>hard_coral_macroalgae</attributeName>
+          <attributeDefinition>Ratio of hard coral to macroalgae during either Lagrangian Drift or over flow path from fore reef to SIB site for Eulerian measurements</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>ratio</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">7.81662721117148</minimum>
+                  <maximum exclusive="false">41.1728051188619</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>64</numberOfRecords>
+    </dataTable>
+    <dataTable>
+      <entityName>Koweek et al Physical oceanographic data of Eulerain measurements, Palmyra Atoll 2012</entityName>
+      <entityDescription>Physical oceanographic data from Eulerian measurements at the SIB site (data in Fig. 3 of the paper)</entityDescription>
+      <physical>
+        <objectName>2012_Koweek_physical_data.csv</objectName>
+        <size unit="bytes">932785</size>
+        <authentication method="MD5">575bd90152f843361452badaa8f96617</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+              <quoteCharacter>"</quoteCharacter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url>NA2012_Koweek_physical_data.csv</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>timestamp</attributeName>
+          <attributeDefinition>Date and time of measurement</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD HH:MM:SS</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>tube</attributeName>
+          <attributeDefinition>Tube corresponding to measurement</attributeDefinition>
+          <storageType>string</storageType>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Tube corresponding to measurement</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>depth</attributeName>
+          <attributeDefinition>depth</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">2.18834623510678</minimum>
+                  <maximum exclusive="false">5.17301867172319</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>U.mag</attributeName>
+          <attributeDefinition>magnitude of water velocity</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>metersPerSecond</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.00197081323916131</minimum>
+                  <maximum exclusive="false">0.232265250293835</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>U.heading</attributeName>
+          <attributeDefinition>compass heading direction of water velocity</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.404003146925675</minimum>
+                  <maximum exclusive="false">357.444731532508</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Temp.bot</attributeName>
+          <attributeDefinition>bottom temperature</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">28.2043909523933</minimum>
+                  <maximum exclusive="false">30.1069162925615</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Temp.mid</attributeName>
+          <attributeDefinition>temperature at mid water column (only at tubes 2 and 4)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">28.3446308006123</minimum>
+                  <maximum exclusive="false">29.9042734976121</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Temp.top</attributeName>
+          <attributeDefinition>near-surface water temperature (only at tubes 2 and 4)</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">28.339533595642</minimum>
+                  <maximum exclusive="false">29.9001512639395</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>tr.fr.sib</attributeName>
+          <attributeDefinition>travel time from forereef to SIB tubes</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>minutes</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">48.6033171852313</minimum>
+                  <maximum exclusive="false">283.05901284261</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Eta.avg</attributeName>
+          <attributeDefinition>time-averaged free surface at SIB site</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>m</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-0.365384171042787</minimum>
+                  <maximum exclusive="false">0.405922094598725</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>airT</attributeName>
+          <attributeDefinition>air temperature from meteorological station on Palmyra Atoll</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>celsius</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">23.9116666687901</minimum>
+                  <maximum exclusive="false">29.6149999996088</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>precip</attributeName>
+          <attributeDefinition>precipitation from meteorological station on Palmyra Atoll</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>millimetersPerHour</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">18.7783333338782</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>PAR</attributeName>
+          <attributeDefinition>photosynthetically active radiation from meteorological station on Palmyra Atoll</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>micromolePerMeterSquaredPerSecond</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">1943.17444444036</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>wind.mag</attributeName>
+          <attributeDefinition>wind speed at 2m from NASA MERRA global model</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>metersPerSecond</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.263007607680004</minimum>
+                  <maximum exclusive="false">6.23797717779608</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>wind.dir</attributeName>
+          <attributeDefinition>wind direction at 2m from NASA MERRA global model</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0.81389674285208</minimum>
+                  <maximum exclusive="false">359.855497525957</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>density</attributeName>
+          <attributeDefinition>average water density across SIB site</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>kilogramPerMeterCubed</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">1021.70067678184</minimum>
+                  <maximum exclusive="false">1022.57331482306</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>tr.fr.sd</attributeName>
+          <attributeDefinition>travel time from foreeef to start of drift 16</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <customUnit>minutes</customUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">18.7540214931784</minimum>
+                  <maximum exclusive="false">108.387025973557</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>3460</numberOfRecords>
+    </dataTable>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <unitList>
+        <unit id="microMolesPerKilogram" name="microMolesPerKilogram" parentSI="" unitType="amountOfSubstanceConcentration">
+          <description>Âµmol/kg = Âµmoles per kilogram of substance</description>
+        </unit>
+        <unit id="microMolesPerLiter" name="microMolesPerLiter" parentSI="" unitType="amountOfSubstanceConcentration">
+          <description>ÂµM = Âµmoles per liter of solution</description>
+        </unit>
+        <unit id="Omega" name="Omega" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="microatmosphere" name="microatmosphere" parentSI="pascal" unitType="pressure">
+          <description>1 microAtmosphere = 0.000001 atmospheres = 1013.25 millibars = 0.101325 Pascals = 0.0000147 lb/sq.in</description>
+        </unit>
+        <unit id="pH" name="pH" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="PracticalSalinityUnit" name="PracticalSalinityUnit" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="degree" name="degree" parentSI="radian" unitType="angle">
+          <description>360 degrees comprise a unit circle.</description>
+        </unit>
+        <unit id="millimolesPerSquareMeterPerHour" name="millimolesPerSquareMeterPerHour" parentSI="" unitType="amountOfSubstanceWeightFlux">
+          <description>millimoles per square meter per hour (areal flux or diffusion of a substance)</description>
+        </unit>
+        <unit id="ratio" name="ratio" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="fraction" name="fraction" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="celsius" name="celsius" parentSI="kelvin" unitType="">
+          <description>SI-derived unit of temperature</description>
+        </unit>
+        <unit id="micromolePerMeterSquaredPerSecond" name="micromolePerMeterSquaredPerSecond" parentSI="molePerMeterSquaredPerSecond" unitType="amountOfSubstanceWeightFlux">
+          <description>areal flux rate</description>
+        </unit>
+        <unit id="millimetersPerHour" name="millimetersPerHour" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="percentage" name="percentage" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="meter" name="meter" parentSI="" unitType="length">
+          <description>SI unit of length</description>
+        </unit>
+        <unit id="metersPerSecond" name="metersPerSecond" parentSI="metersPerSecond" unitType="speed">
+          <description>meters per second</description>
+        </unit>
+        <unit id="minutes" name="minutes" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="m" name="m" parentSI="" unitType="">
+          <description/>
+        </unit>
+        <unit id="kilogramPerMeterCubed" name="kilogramPerMeterCubed" parentSI="kilogramPerMeterCubed" unitType="massDensity">
+          <description>kilograms per cubit meter</description>
+        </unit>
+      </unitList>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>

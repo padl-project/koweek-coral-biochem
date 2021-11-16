@@ -31,7 +31,7 @@ Contains the following variables:
 **site_lon:** longitude of tubes (deg)
 **site_names:** names of all five tubes
 **tr_fr_sib:** travel time from forereef to SIB tubes (min)
-**tr_fr_sd:** travel time from foreeef to start of drift 16 (min)
+**tr_fr_sd:** travel time from forereef to start of drift 16 (min)
 **wind_dir:** wind direction at 2m from NASA MERRA global model (deg)
 **wind_mag:** wind speed at 2m from NASA MERRA global model (m s^-1)
 

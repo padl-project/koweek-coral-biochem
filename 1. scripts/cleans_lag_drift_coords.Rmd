@@ -4,6 +4,15 @@ author: "Camila Vargas"
 date: "10/22/2021"
 output: html_document
 ---
+Lagrangian Drift tracks
+File Name: Koweek_et_al_Lagrangian_Drift_coordinates.mat
+
+
+Organized into 22-row cell arrays. Position of each cell in the array corresponds with equally-numbered Lagrangian Drift (e.g., Data in 4th cell corresponds with Lagrangian Drift 4). Empty cells in the array correspond to Lagrangian Drifts eliminated during data processing (as discussed in the Methods section of the paper).
+
+Contains the following variables:
+LD_Latitudes: Latitudes of all points along each Lagrangian Drift
+LD_Longitudes: Longitudes of all points along each Lagrangian Drift
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

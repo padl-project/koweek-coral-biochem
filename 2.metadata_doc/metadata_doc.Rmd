@@ -29,7 +29,7 @@ Environmental and ecological controls of coral community metabolism on Palmyra A
 <!--_Include what, where, and when in the dataset title_-->
  - 2012_Koweek_et_al_physical_data
  - 2012_Koweek_et_al_eulerian_SIB_coords
- - 2012_Koweek_et_al_biogeochem_eulerian_SIB
+ - 2012_Koweek_et_al_biogeochem_data
  - 2012_Koweek_et_al_pca_data
  - 2012_Koweek_et_al_offshore_ctd_cast_coords
  - 2012_Koweek_et_al_LD_coords
@@ -199,7 +199,7 @@ flextable::flextable(funding_table) %>%
 
 Information <- c("Begin date", "End date", "Is data collection ongoing or completed?")
 
-Description <- c("September 2012 ", "September 2012", "Completed")
+Description <- c("September 20 2012 ", "September 25 2012", "Completed")
 
 timeframe_table <- tibble(Information, Description)
 
@@ -319,7 +319,7 @@ files_names <- tibble(
 ## Creating the attribute .txt
 
 # for (i in files_names$file_name){
-#   
+# 
 #   EMLassemblyline::template_table_attributes(
 #   path = path_templates,
 #   data.path = path_data,
@@ -336,6 +336,7 @@ read_attribute <- function(test){
   mutate(unit = case_when(unit == "!Add units here!" ~ "*"))
 }
 
+## Loop to read and name each file 
 for (i in files_names$position){
   
   assign(files_names$attribute_name[i], read_attribute(files_names$file_name[i]))
@@ -345,7 +346,7 @@ for (i in files_names$position){
 
 ```
 
-
+1. 2012_Koweek_biogeochemical_data
 
 ```{r, attribute table 1, echo=FALSE, message= FALSE, warning= FALSE}
 
@@ -354,15 +355,18 @@ flextable::flextable(data_attributes1) %>%
 
 ```
 
+<br>
 
+2. 2012_Koweek_eulerian_SIB_coords
 ```{r, attribute table 2, echo=FALSE, message= FALSE, warning= FALSE}
 
 flextable::flextable(data_attributes2) %>% 
   width(width = 1)
 
 ```
+<br>
 
-
+3. 2012_Koweek_LD_coords
 ```{r, attribute table 3, echo=FALSE, message= FALSE, warning= FALSE}
 
 flextable::flextable(data_attributes3) %>% 
@@ -370,7 +374,8 @@ flextable::flextable(data_attributes3) %>%
 
 ```
 
-
+<br>
+4. 2012_Koweek_offshore_ctd_cast_coords
 ```{r, attribute table 4, echo=FALSE, message= FALSE, warning= FALSE}
 
 flextable::flextable(data_attributes4) %>% 
@@ -378,6 +383,9 @@ flextable::flextable(data_attributes4) %>%
 
 ```
 
+<br>
+
+5. 2012_Koweek_pca_data
 ```{r, attribute table 5, echo=FALSE, message= FALSE, warning= FALSE}
 
 flextable::flextable(data_attributes5) %>% 
@@ -385,6 +393,16 @@ flextable::flextable(data_attributes5) %>%
 
 ```
 
+<br>
+
+6. 2012_Koweek_physical_data
+
+```{r, attribute table 6, echo=FALSE, message= FALSE, warning= FALSE}
+
+flextable::flextable(data_attributes6) %>% 
+  width(width = 1)
+
+```
 
 ## 14. Attributes code
 
@@ -401,18 +419,22 @@ _If you use codes in your column, please define each code in the following table
 
 # **UPDATE NAMES**
 
-cat_vars <- read.delim2(here::here("3.data_attributes/catvars_2012_Koweek_et_al_LD_coords.txt"))
+
+
+cat_vars1 <- read.delim2(here::here("3.data_attributes/catvars_2012_Koweek_LD_coords.txt"))
+
 
 ```
 
 
-```{r, categorical variables table, echo=FALSE, message= FALSE, warning= FALSE}
+```{r, categorical variables table 1, echo=FALSE, message= FALSE, warning= FALSE}
 
-flextable::flextable(cat_vars) %>%
+flextable::flextable(cat_vars1) %>%
   autofit(add_w = 0.2, add_h = 0.1, part = c("body", "header"), unit = "in")
   
 
 ```
+
 
 
 
@@ -518,7 +540,8 @@ colnames(publications) <- publications_colnames
 ```{r, publications export, echo=FALSE, message= FALSE, warning= FALSE}
 
 flextable::flextable(publications) %>% 
-  autofit(add_w = 0.2, add_h = 0.1, part = c("body", "header"), unit = "in")
+  width(width = 1)
+  #autofit(add_w = 0.2, add_h = 0.1, part = c("body", "header"), unit = "in")
 ```
 
 

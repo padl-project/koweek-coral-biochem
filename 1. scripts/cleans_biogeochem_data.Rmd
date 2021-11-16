@@ -87,7 +87,7 @@ biochem_long <- df %>%
 time_data <-  biochem_long %>% 
   filter(variable == "Time") %>% 
   mutate(Time = as.POSIXct((value-719529)*86400, origin = "1970-01-01", tz = "HAST")) %>%
-  select(-value)
+  select(-value, -variable)
 
 biochem_wide <- biochem_long %>% 
   filter(variable != "Time") %>% 
@@ -140,13 +140,12 @@ View(test_3)
 
 plot_data <- biochem_long %>%
   filter(variable != "Time") %>% 
-  left_join(time_data, by = c("position", "tube", "date")) %>% 
-  select(-variable.y)
+  left_join(time_data, by = c("position", "tube", "date"))
   
 ggplot(plot_data, 
        aes(x = Time, y = value, color = tube)) +
-           geom_line() +
-  facet_grid(variable.x ~ ., scales = "free") +
+           geom_point() +
+  facet_grid(variable ~ ., scales = "free") +
            #facet_wrap(~variable, scales = "free") +
            theme_bw()
   

@@ -15,18 +15,18 @@ drive_find(n_max = 10)
 ############################################################
 ## User edit zone
 
-# change the following number based on each of the datasets
-dataset_id <- 101
+# **UPDATE** the following number based on PADL id (dataset)
+dataset_id <- 106
 
-folder_path<- here::here("project.101/")
+folder_path<- here::here(paste0("4.project.", dataset_id,"/"))
 
 #end user edit zone###########
 ############################################################
 
 #loading all the functions
-source(paste0(getwd(), '/eml_generation/download_metadata.R'))
-source(paste0(getwd(), '/eml_generation/get_meta_xlsx.R'))
-source(paste0(getwd(), '/eml_generation/generate_EML_Assemblyline.R'))
+source(paste0(getwd(), '/5.eml_generation/download_metadata.R'))
+source(paste0(getwd(), '/5.eml_generation/get_meta_xlsx.R'))
+source(paste0(getwd(), '/5.eml_generation/generate_EML_Assemblyline.R'))
 
 
 #read the metadata content out of xlsx

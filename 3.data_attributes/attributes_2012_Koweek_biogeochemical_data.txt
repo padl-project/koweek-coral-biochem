@@ -1,0 +1,13 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+Time		Date		!Add datetime specifier here!		
+date		Date		!Add datetime specifier here!		
+tube		character				
+DIC		numeric	!Add units here!			
+DOuM		numeric	!Add units here!			
+Omega		numeric	!Add units here!			
+pCO2		numeric	!Add units here!			
+pH		numeric	!Add units here!			
+S		numeric	!Add units here!			
+sDIC		numeric	!Add units here!			
+sTA		numeric	!Add units here!			
+TA		numeric	!Add units here!			
